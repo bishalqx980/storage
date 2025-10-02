@@ -1,0 +1,28 @@
+#buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 250px;
+    margin: 20px auto;
+}
+
+.button-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f8f8f8;
+    transition: background 0.2s;
+}
+
+.button-link:hover {
+    background: #e8e8e8;
+}
+
+.button-link img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
