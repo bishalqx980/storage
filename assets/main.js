@@ -1,7 +1,6 @@
 const siteDataPath = "./assets/data.json";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    // Getting Site JSON data
     const siteData = await fetchSiteData();
     if (!siteData) {
         alert("Error: Site Data wasn't found!!");
@@ -9,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     renderButtons(siteData);
+    document.getElementById("year").textContent = new Date().getFullYear();
 });
 
 async function fetchSiteData() {
@@ -23,25 +23,17 @@ async function fetchSiteData() {
 }
 
 function renderButtons(siteData) {
-    const container = document.getElementById("buttons-container");
+    const container = document.getElementById("content");
+    let output = "";
 
     Object.values(siteData).forEach(button => {
-        const link = document.createElement("a");
-        link.href = button.url;
-        link.target = "_blank";
-        link.className = "button-link";
-
-        const img = document.createElement("img");
-        img.src = button.icon;
-        img.alt = button.title;
-
-        const span = document.createElement("span");
-        span.textContent = button.title;
-
-        link.appendChild(img);
-        link.appendChild(span);
-
-        container.appendChild(link);
+        output += `
+            <a href="${button.url}" target="_blank" class="btn-card">
+                <img src="${button.icon}" alt="${button.title}">
+                <div class="btn-title">${button.title}</div>
+            </a>
+        `;
     });
-}
 
+    container.innerHTML = output || "<p style='color: var(--muted);'>No data found.</p>";
+}
