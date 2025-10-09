@@ -2,14 +2,29 @@
 const siteDataPath = "https://gist.githubusercontent.com/bishalqx980/8a9e7d114cb270f6b104deefd702b6b8/raw/data.json";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const siteData = await fetchSiteData();
-    if (!siteData) {
-        alert("Error: Site Data wasn't found!!");
-        return;
-    }
-
-    renderButtons(siteData);
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Temporary sending a loading button until gist data loads
+    renderButtons({
+        "loading": {
+            "icon": "./assets/loading.png",
+            "url": "./index.html",
+            "title": "Loading Data, Please Wait..."
+        }
+    });
+
+    const siteData = await fetchSiteData();
+    if (siteData) {
+        renderButtons(siteData);
+    } else {
+        return renderButtons({
+            "failed": {
+                "icon": "./assets/fail.png",
+                "url": "./index.html",
+                "title": "Failed to load data!!"
+            }
+        });
+    }
 });
 
 async function fetchSiteData() {
