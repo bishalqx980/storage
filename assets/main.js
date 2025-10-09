@@ -1,4 +1,5 @@
-const siteDataPath = "./assets/data.json";
+// gist link instead of local "./assets/data.json";
+const siteDataPath = "https://gist.githubusercontent.com/bishalqx980/8a9e7d114cb270f6b104deefd702b6b8/raw/data.json";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const siteData = await fetchSiteData();
