@@ -3,5 +3,10 @@
     "icon": "./assets/favicon.png",
     "url": "./index.html",
     "title": "Demo"
+  },
+  "mela": {
+    "icon": "https://images.yourstory.com/cs/images/companies/AppIconSquareiOS1024px-1615784832763.png",
+    "url": "https://www.facebook.com/share/v/19jUY3eDsM/",
+    "title": "Mela Video (Facebook)"
   }
 }
